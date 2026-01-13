@@ -14,7 +14,6 @@ The objective is **not** to estimate regulatory credit risk parameters, but to:
 The project follows a **full credit decisioning pipeline**:
 **Policy rules → Portfolio diagnostics → Statistical modeling → Calibration → Threshold optimization → Risk‑based pricing**.
 
----
 
 ## Dataset Description
 
@@ -37,7 +36,6 @@ The dataset is designed to reflect **real underwriting logic**:
 * Extreme risk profiles are mostly filtered by policy rules
 * Approval decisions are non‑linear and exposure‑sensitive
 
----
 
 ## Credit Approval: Conceptual Background
 
@@ -62,7 +60,6 @@ In practice, approval decisions are not driven by a single model, but by a **lay
 
 This project mirrors that structure using the information available in the dataset.
 
----
 
 ## Project Structure & Methodology
 
@@ -79,7 +76,6 @@ Key findings:
 
 This step establishes that portfolio risk is primarily **concentration‑driven**, not volume‑driven.
 
----
 
 ### 2. Hard Risk Rules (Policy Layer)
 
@@ -95,7 +91,6 @@ Results:
 
 **Insight:** rule‑based screening disproportionately removes exposure and materially reduces concentration and tail risk before any model‑based decisioning.
 
----
 
 ### 3. Risk Definition & Segmentation
 
@@ -116,7 +111,6 @@ Results:
 * Majority of the portfolio lies in a medium‑risk band.
 * Conservative segmentation compresses strong borrowers, motivating further model refinement.
 
----
 
 ### 4. Baseline Logistic Regression (Eligible Population)
 
@@ -130,7 +124,6 @@ Results:
 
 This model provides a transparent and interpretable baseline for credit decisioning.
 
----
 
 ### 5. Non‑Linear Feature Engineering
 
@@ -146,7 +139,6 @@ Results:
 
 This demonstrates that meaningful risk structure is non‑linear but monotonic.
 
----
 
 ### 6. Random Forest Benchmark
 
@@ -163,7 +155,6 @@ Results:
 
 Loan size is less predictive than borrower behavior, reinforcing underwriting intuition.
 
----
 
 ### 7. Decision Comparison at Fixed Threshold
 
@@ -178,7 +169,6 @@ At a 0.5 decision threshold:
 
 This represents a **Pareto improvement**: lower risk and better opportunity capture without tightening credit.
 
----
 
 ### 8. Probability Calibration
 
@@ -190,7 +180,6 @@ Calibration diagnostics reveal significant miscalibration in raw model probabili
 
 Calibrated probabilities align predicted and observed approval rates across risk buckets, enabling reliable thresholding and pricing.
 
----
 
 ### 9. Threshold Optimization
 
@@ -206,7 +195,6 @@ Using calibrated probabilities, the approval threshold is optimized.
 
 This highlights threshold selection as a **high‑impact, low‑cost risk lever**.
 
----
 
 ### 10. Risk‑Based Pricing
 
@@ -226,7 +214,6 @@ Pricing decisions naturally separate applications into:
 * Price with tighter terms
 * Review
 
----
 
 ### 11. Production‑Ready Decision Logic
 
@@ -238,7 +225,6 @@ Example:
 
 > Approval probability ≈ 66% → Risk tier D → Approve only with tighter pricing or additional review
 
----
 
 ## Conclusion
 
